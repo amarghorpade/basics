@@ -11,11 +11,15 @@ import java.io.Serializable;
 public class SerializationDemo implements Serializable 
 {
 	final int i;
-	int j=50;
+	transient int j=50;
+	int k=50;
+	String s1= "amar";
+	static int f=112;
 	
 	public SerializationDemo() 
 	{
 		i=6000;
+		s1="sagar";
 	}
 	
 	public static void main(String[] args) throws IOException, ClassNotFoundException
@@ -23,12 +27,15 @@ public class SerializationDemo implements Serializable
 		/*SerializationDemo sd1= new SerializationDemo();
 		FileOutputStream fos= new FileOutputStream("abc.txt");
 		ObjectOutputStream oos= new ObjectOutputStream(fos);
-		oos.writeObject(sd1);*/
-		
+		oos.writeObject(sd1);
+		System.out.println("Serialization Complate");
+		*/
 		FileInputStream fis= new FileInputStream("abc.txt");
 		ObjectInputStream ois= new ObjectInputStream(fis);
 		SerializationDemo sd=(SerializationDemo)ois.readObject();
 		System.out.println(sd.i);
 		System.out.println(sd.j);
+		System.out.println(sd.s1);
+		System.out.println(sd.f);
 	}
 }

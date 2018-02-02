@@ -15,10 +15,11 @@ public class SerializationController
 		   SerializationDemoWriteRead cp= new SerializationDemoWriteRead("Ankita","12345Atul");  
 		   ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(f));  
 	       out.writeObject(cp);  
+	       
 	      
 	       ObjectInputStream in = new ObjectInputStream(new FileInputStream(f));
 	       cp=(SerializationDemoWriteRead)in.readObject();
-	       String str=cp.getAuthor();
-	       System.out.println("After deserialize user is: " +cp.getUser()+" and password is:"+str.substring(5));   
+	       String str=cp.getPassword();
+	       System.out.println("After deserialize user is: " +cp.getUserName()+" and password is:"+str.substring(5));   
 	   }
 }

@@ -7,35 +7,40 @@ import java.io.Serializable;
 
 public class SerializationDemoWriteRead implements Serializable {
 
-//	public static final long serialVersionUID = 1L;
-	private String user;
-	private String author;
-	
-	public SerializationDemoWriteRead(String user,String author){
-		this.user=user;
-		this.author=author;
+	// public static final long serialVersionUID = 1L;
+	private String userName;
+	private String password;
+
+	public SerializationDemoWriteRead(String userName, String password) {
+		super();
+		this.userName = userName;
+		this.password = password;
 	}
-	
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	private void writeObject(ObjectOutputStream out) throws IOException {
-        out.defaultWriteObject();
-        out.writeObject(this.author);
-    }
+		out.defaultWriteObject();
+		out.writeObject(this.password);
+	}
 
-    private void readObject(ObjectInputStream in) throws IOException,ClassNotFoundException {
-        in.defaultReadObject();
-        this.author = (String)in.readObject();
-    }
+	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+		in.defaultReadObject();
+		this.password = (String) in.readObject();
+	}
 
-	public String getUser() {
-		return user;
-	}
-	public void setUser(String user) {
-		this.user = user;
-	}
-	public String getAuthor() {
-		return author;
-	}
-	public void setAuthor(String author) {
-		this.author = author;
-	}
 }
